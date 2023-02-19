@@ -60,25 +60,46 @@ class _CountrySearchListWidgetState extends State<CountrySearchListWidget> {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
-          child: TextFormField(
-            key: Key(TestHelper.CountrySearchInputKeyValue),
-            decoration: getSearchBoxDecoration(),
-            controller: _searchController,
-            autofocus: widget.autoFocus,
-            onChanged: (value) {
-              final String value = _searchController.text.trim();
-              return setState(
-                () => filteredCountries = Utils.filterCountries(
-                  countries: widget.countries,
-                  locale: widget.locale,
-                  value: value,
+        Container(
+            height: 50,
+            margin: const EdgeInsets.only(
+              top: 8,
+              left: 8,
+              right: 8,
+            ),
+            decoration: BoxDecoration(
+              border:
+                  Border.all(color: Colors.black.withOpacity(0.025), width: 1),
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(8),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.075),
+                  spreadRadius: 0.25,
+                  blurRadius: 0,
+                  offset: const Offset(0, 0.75),
                 ),
-              );
-            },
-          ),
-        ),
+              ],
+            ),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+              child: TextFormField(
+                key: Key(TestHelper.CountrySearchInputKeyValue),
+                decoration: getSearchBoxDecoration(),
+                controller: _searchController,
+                autofocus: widget.autoFocus,
+                onChanged: (value) {
+                  final String value = _searchController.text.trim();
+                  return setState(
+                    () => filteredCountries = Utils.filterCountries(
+                      countries: widget.countries,
+                      locale: widget.locale,
+                      value: value,
+                    ),
+                  );
+                },
+              ),
+            )),
         Flexible(
           child: ListView.builder(
             controller: widget.scrollController,
@@ -184,7 +205,7 @@ class _Flag extends StatelessWidget {
             child: useEmoji!
                 ? Text(
                     Utils.generateFlagEmojiUnicode(country?.alpha2Code ?? ''),
-                    style: Theme.of(context).textTheme.headline5,
+                    style: Theme.of(context).textTheme.headlineSmall,
                   )
                 : country?.flagUri != null
                     ? CircleAvatar(
