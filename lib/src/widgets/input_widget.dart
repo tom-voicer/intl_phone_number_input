@@ -424,6 +424,7 @@ class _InputWidgetView
               textDirection: TextDirection.ltr,
               controller: state.controller,
               cursorColor: widget.cursorColor,
+              cursorHeight: 24,
               focusNode: widget.focusNode,
               enabled: widget.isEnabled,
               autofocus: widget.autoFocus,

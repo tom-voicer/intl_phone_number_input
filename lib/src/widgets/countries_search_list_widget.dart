@@ -86,6 +86,8 @@ class _CountrySearchListWidgetState extends State<CountrySearchListWidget> {
               child: TextFormField(
                 key: Key(TestHelper.CountrySearchInputKeyValue),
                 decoration: getSearchBoxDecoration(),
+                style: TextStyle(fontWeight: FontWeight.w700),
+                cursorHeight: 24,
                 controller: _searchController,
                 autofocus: widget.autoFocus,
                 onChanged: (value) {
