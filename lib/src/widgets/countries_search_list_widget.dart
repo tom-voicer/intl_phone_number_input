@@ -177,6 +177,7 @@ class DirectionalCountryListTile extends StatelessWidget {
           '${Utils.getCountryName(country, locale)}',
           textDirection: Directionality.of(context),
           textAlign: TextAlign.start,
+          style: TextStyle(fontWeight: FontWeight.w700),
         ),
       ),
       subtitle: Align(
